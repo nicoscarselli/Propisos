@@ -1,38 +1,47 @@
 @font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter-ExtraBold.eot');
-  src: url('../fonts/Inter-ExtraBold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Inter-ExtraBold.woff2') format('woff2'),
-    url('../fonts/Inter-ExtraBold.woff') format('woff'),
-    url('../fonts/Inter-ExtraBold.ttf') format('truetype'),
-    url('../fonts/Inter-ExtraBold.svg#Inter-ExtraBold') format('svg');
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-Bold.eot');
+  src: url('../fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Montserrat-Bold.woff2') format('woff2'),
+      url('../fonts/Montserrat-Bold.woff') format('woff'),
+      url('../fonts/Montserrat-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter-SemiBold.eot');
-  src: url('../fonts/Inter-SemiBold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Inter-SemiBold.woff2') format('woff2'),
-    url('../fonts/Inter-SemiBold.woff') format('woff'),
-    url('../fonts/Inter-SemiBold.ttf') format('truetype'),
-    url('../fonts/Inter-SemiBold.svg#Inter-SemiBold') format('svg');
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-ExtraBold.eot');
+  src: url('../fonts/Montserrat-ExtraBold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Montserrat-ExtraBold.woff2') format('woff2'),
+      url('../fonts/Montserrat-ExtraBold.woff') format('woff'),
+      url('../fonts/Montserrat-ExtraBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-SemiBold.eot');
+  src: url('../fonts/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Montserrat-SemiBold.woff2') format('woff2'),
+      url('../fonts/Montserrat-SemiBold.woff') format('woff'),
+      url('../fonts/Montserrat-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter-Medium.eot');
-  src: url('../fonts/Inter-Medium.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Inter-Medium.woff2') format('woff2'),
-    url('../fonts/Inter-Medium.woff') format('woff'),
-    url('../fonts/Inter-Medium.ttf') format('truetype'),
-    url('../fonts/Inter-Medium.svg#Inter-Medium') format('svg');
-  font-weight: 500;
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-Regular.eot');
+  src: url('../fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+      url('../fonts/Montserrat-Regular.woff') format('woff'),
+      url('../fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
@@ -44,10 +53,10 @@
 --------------------------------------------------------------*/
 :root {
   --white: #ffffff;
-  --dark: #57594e;
-  --primary: #65bd24;
-  --secondary: #e0f2d3;
-  --grey: #eeeeed;
+  --dark: #545454;
+  --primary: #e4022e;
+  --secondary: #004f9f;
+  --grey: #f2f2f2;
   scroll-behavior: smooth;
 }
 
@@ -88,8 +97,8 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
   color: var(--dark);
 }
 
@@ -109,15 +118,13 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Inter", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
   letter-spacing: -1.5px;
 }
 
-h5,
-.h5,
-h6,
-.h6 {
+h5, .h5,
+h6, .h6 {
   font-weight: 600;
   letter-spacing: -1px;
 }
@@ -140,8 +147,8 @@ h6,
   font-weight: 500;
 }
 
-.font-semibold {
-  font-weight: 600;
+.font-bold {
+  font-weight: 700;
 }
 
 .big-title {
@@ -193,6 +200,22 @@ h6,
   from {
     box-shadow: 0 0 0 0 var(--primary);
   }
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary) !important; 
+}
+
+.bg-dark {
+  background-color: var(--dark) !important;
+}
+
+.bg-grey {
+  background-color: var(--grey) !important;
 }
 
 /*--------------------------------------------------------------
@@ -460,7 +483,7 @@ h6,
 .mobile-nav-toggle {
   color: var(--white);
   font-size: 28px;
-  cursor: pointer;
+  cursor: poMontserrat;
   display: none;
   line-height: 0;
   transition: 0.5s;
@@ -930,7 +953,7 @@ section {
 }
 
 #obras .carousel-indicators li {
-  cursor: pointer;
+  cursor: poMontserrat;
   background: var(--white);
   overflow: hidden;
   border: 0;
