@@ -159,9 +159,9 @@
   }
 
   /**
-   * servicios slider
+   * pulido slider
    */
-   new Swiper('.servicios-slider', {
+   new Swiper('.pulido-slider', {
     speed: 1000,
     loop: true,
     grabCursor: true,
@@ -201,7 +201,7 @@
    */
   $('.owl-carousel').owlCarousel({
     loop:true,
-    margin:10,
+    margin:30,
 	  video:false,
     nav:false,
     lazyLoad:true,
@@ -222,27 +222,27 @@
               items:2
           },
           990:{
-              items:4
+              items:5
           },
           1200:{
-              items:4
+              items:5
           },
           1500:{
-              items:4
+              items:5
           }
       }
   })
 
   /*
-  * obras carousel indicators
+  * proyectos carousel indicators
   */
-  let obrasCarouselIndicators = select("#obras-carousel-indicators")
-  let obrasCarouselItems = select('#obrasCarousel .carousel-item', true)
+  let proyectosCarouselIndicators = select("#proyectos-carousel-indicators")
+  let proyectosCarouselItems = select('#proyectosCarousel .carousel-item', true)
  
-  obrasCarouselItems.forEach((item, index) => {
+  proyectosCarouselItems.forEach((item, index) => {
     (index === 0) ?
-    obrasCarouselIndicators.innerHTML += "<li data-bs-target='#obrasCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
-    obrasCarouselIndicators.innerHTML += "<li data-bs-target='#obrasCarousel' data-bs-slide-to='" + index + "'></li>"
+    proyectosCarouselIndicators.innerHTML += "<li data-bs-target='#proyectosCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
+    proyectosCarouselIndicators.innerHTML += "<li data-bs-target='#proyectosCarousel' data-bs-slide-to='" + index + "'></li>"
   });
   
 

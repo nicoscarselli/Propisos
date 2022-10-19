@@ -100,6 +100,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: normal;
   color: var(--dark);
+  letter-spacing: -0.5px;
 }
 
 a {
@@ -112,25 +113,13 @@ a:hover {
   text-decoration: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-  letter-spacing: -1.5px;
-}
-
+h1, .h1,
+h2, .h2, 
+h3, .h3,
+h4, .h4, 
 h5, .h5,
 h6, .h6 {
-  font-weight: 600;
-  letter-spacing: -1px;
-}
-
-.p {
-  letter-spacing: -0.2px;
+  font-weight: bold !important;
 }
 
 .title-uppercase-primary {
@@ -143,22 +132,19 @@ h6, .h6 {
   color: var(--primary) !important;
 }
 
+.text-secondary {
+  color: var(--secondary) !important;
+}
+
 .font-normal {
-  font-weight: 500;
+  font-weight: normal !important;
 }
 
-.font-bold {
-  font-weight: 700;
+.font-semibold {
+  font-weight: 600;
 }
 
-.big-title {
-  font-size: 32px;
-  line-height: 40px;
-  font-weight: bold
-}
-
-.btn-primary {
-  background: var(--primary);
+.btn-primary, .btn-secondary {
   border: none;
   border-radius: 12px;
   color: var(--white);
@@ -169,14 +155,35 @@ h6, .h6 {
   transition: 0.5s;
 }
 
+.btn-primary {
+  background: var(--primary);
+}
+
+.btn-secondary {
+  background: var(--secondary);
+}
+
 .btn-primary:focus {
   border: none;
   background: var(--primary);
 }
 
+.btn-secondary:focus {
+  border: none;
+  background: var(--secondary);
+}
+
 .btn-primary:hover {
   background: var(--secondary);
   color: var(--primary);
+  box-shadow: 0 0 0 12px transparent;
+  -webkit-animation: pulse 1s;
+  animation: pulse 1s;
+}
+
+.btn-secondary:hover {
+  background: var(--white);
+  color: var(--secondary);
   box-shadow: 0 0 0 12px transparent;
   -webkit-animation: pulse 1s;
   animation: pulse 1s;
@@ -271,22 +278,23 @@ h6, .h6 {
 # Back to top button
 --------------------------------------------------------------*/
 .back-to-top {
+  background-color: var(--secondary);
+  border: 1px solid var(--white);
   position: fixed;
   visibility: hidden;
   opacity: 0;
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  border: 2px solid var(--primary);
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   border-radius: 50px;
   transition: all 0.4s;
-  color: var(--primary);
+  color: var(--white);
 }
 
 .back-to-top i {
-  font-size: 28px;
+  font-size: 32px;
   line-height: 0;
 }
 
@@ -307,13 +315,15 @@ h6, .h6 {
 #header {
   transition: all 0.5s;
   z-index: 997;
-  border-bottom: 1px solid rgba(87, 89, 78, 1);
-  background: rgba(87, 89, 78, 0.6);
 }
 
 #header.header-scrolled,
 #header.header-inner-pages {
-  background: rgba(87, 89, 78, 1);
+  background: rgba(255, 255, 255, 1);
+}
+
+#header.header-scrolled .navbar a, .navbar a:focus {
+  color: var(--secondary);
 }
 
 #header .logo img {
@@ -387,7 +397,7 @@ h6, .h6 {
   content: "";
   position: absolute;
   width: 100%;
-  height: 2px;
+  height: 4px;
   bottom: -2px;
   left: 0;
   background-color: var(--primary);
@@ -697,42 +707,59 @@ section {
   overflow: hidden;
 }
 
-.section-bg-dark {
-  background-color: var(--dark);
-}
-
-.section-bg-grey {
-  background-color: var(--grey);
-}
-
 .section-title {
   padding-bottom: 24px;
 }
 
-.section-title h2 {
-  color: var(--primary);
-  font-size: 16px;
+/* List */
+section ul {
+  counter-reset: index;  
+  padding: 0;
+}
+
+/* List element */
+section li, section li.blue {
+  counter-increment: index; 
+  display: flex;
+  align-items: center;
+  padding: 0 0 12px 0;
+  box-sizing: border-box;
+}
+
+section li {
+  font-size: 1.2rem;;
+}
+
+section li.blue {
+  font-size: 1rem;;
+}
+
+
+/* Element counter */
+section li::before, section li.blue::before {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  align-self: flex-start;
+  background-attachment: fixed;
+  content: counters(index, ".", decimal-leading-zero);
+  font-feature-settings: "tnum";
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: 1.6px;
+  min-width: 50px;
+  padding-right: 12px;
   text-align: left;
-  text-transform: uppercase;
-  position: relative;
 }
 
-.section-title h2::before {
-  content: "";
-  position: relative;
-  display: inline-block;
-  margin-right: 16px;
-  width: 38px;
-  height: 4px;
-  background: var(--primary);
-  top: -4px;
+/* Element counter */
+section li::before {
+  background-color: var(--white);
 }
 
+/* Element counter */
+section li.blue::before {
+  background-color: var(--secondary);
+}
 
 @media (max-width: 768px) {
   section {
@@ -742,76 +769,74 @@ section {
 
 
 /*--------------------------------------------------------------
-# Servicios
+# pulido
 --------------------------------------------------------------*/
-.servicios-slider {
+.pulido-slider {
   margin-top: 100px;
 }
 
-.servicios .servicios-item {
+.pulido .pulido-item {
   box-sizing: content-box;
   margin: 0 48px 0 0;
-  color: var(--white);
 }
 
-.servicios .servicios-item .row {
+.pulido .pulido-item .row {
   align-items: center;
   vertical-align: middle;
 }
 
-.servicios .servicios-item img {
+.pulido .pulido-item img {
   max-width: 100%;
   border-radius: 12px;
 }
 
-.servicios .servicios-item h3 {
+.pulido .pulido-item h3 {
   font-size: 24px;
   margin: 0 0 12px 0;
 }
 
-.servicios .servicios-item p {
-  font-size: 14px;
+.pulido .pulido-item p {
   margin: 0 0 12px 0;
 }
 
-.servicios .swiper-pagination {
+.pulido .swiper-pagination {
   margin-top: 20px;
   position: relative;
 }
 
-.servicios .swiper-pagination .swiper-pagination-bullet {
+.pulido .swiper-pagination .swiper-pagination-bullet {
   background-color: var(--secondary);
   height: 8px;
   opacity: 1;
   width: 8px;
 }
 
-.servicios .swiper-pagination .swiper-pagination-bullet-active {
+.pulido .swiper-pagination .swiper-pagination-bullet-active {
   background-color: var(--primary);
 }
 
-.servicios .swiper-button-next,
+.pulido .swiper-button-next,
 .swiper-button-prev {
   color: var(--primary);
 }
 
 
 @media (max-width: 1199px) {
-  .servicios .swiper-slide-active {
+  .pulido .swiper-slide-active {
     opacity: 1;
   }
 
-  .servicios .swiper-pagination {
+  .pulido .swiper-pagination {
     margin-top: 0;
   }
 }
 
 @media (max-width: 768px) {
-  .servicios .servicios-item {
+  .pulido .pulido-item {
     margin: 0;
   }
 
-  .servicios .servicios-item img {
+  .pulido .pulido-item img {
     width: 100%;
     margin-bottom: 2rem;
   }
@@ -821,7 +846,7 @@ section {
     display: none;
   }
 
-  .servicios .swiper-button-prev,
+  .pulido .swiper-button-prev,
   .swiper-button-next {
     display: none;
   }
@@ -838,19 +863,19 @@ section {
 }
 
 /*--------------------------------------------------------------
-# obras
+# proyectos
 --------------------------------------------------------------*/
-#obras {
+#proyectos {
   width: 100%;
   height: 90vh;
   overflow: hidden;
   position: relative;
 }
 
-#obras .carousel,
-#obras .carousel-inner,
-#obras .carousel-item,
-#obras .carousel-item::before {
+#proyectos .carousel,
+#proyectos .carousel-inner,
+#proyectos .carousel-item,
+#proyectos .carousel-item::before {
   position: absolute;
   top: 0;
   right: 0;
@@ -858,19 +883,18 @@ section {
   bottom: 0;
 }
 
-#obras .carousel-item {
+#proyectos .carousel-item {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-#obras .carousel-item::before {
+#proyectos .carousel-item::before {
   content: "";
-  background: rgb(87, 89, 78);
-  background: linear-gradient(0deg, rgba(87, 89, 78, 0) 0%, rgba(87, 89, 78, 0.7035189075630253) 100%);
+  background: rgb(0, 0, 0, .3);
 }
 
-#obras .carousel-container {
+#proyectos .carousel-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -880,7 +904,7 @@ section {
   right: 50px;
 }
 
-#obras .carousel .carousel-main-title {
+#proyectos .carousel .carousel-main-title {
   position: absolute;
   z-index: 2;
   left: 50px;
@@ -891,45 +915,47 @@ section {
   text-transform: uppercase;
 }
 
-#obras .container {
+#proyectos .container {
   text-align: center;
 }
 
-#obras p {
+#proyectos p {
   -webkit-animation-delay: 0.4s;
   animation-delay: 0.4s;
-  margin: 0 auto 30px auto;
   color: var(--white);
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 auto 48px auto;
 }
 
-#obras .carousel-inner .carousel-item {
+#proyectos .carousel-inner .carousel-item {
   transition-property: opacity;
   background-position: center top;
 }
 
-#obras .carousel-inner .carousel-item,
-#obras .carousel-inner .active.carousel-item-start,
-#obras .carousel-inner .active.carousel-item-end {
+#proyectos .carousel-inner .carousel-item,
+#proyectos .carousel-inner .active.carousel-item-start,
+#proyectos .carousel-inner .active.carousel-item-end {
   opacity: 0;
 }
 
-#obras .carousel-inner .active,
-#obras .carousel-inner .carousel-item-next.carousel-item-start,
-#obras .carousel-inner .carousel-item-prev.carousel-item-end {
+#proyectos .carousel-inner .active,
+#proyectos .carousel-inner .carousel-item-next.carousel-item-start,
+#proyectos .carousel-inner .carousel-item-prev.carousel-item-end {
   opacity: 1;
   transition: 0.5s;
 }
 
-#obras .carousel-inner .carousel-item-next,
-#obras .carousel-inner .carousel-item-prev,
-#obras .carousel-inner .active.carousel-item-start,
-#obras .carousel-inner .active.carousel-item-end {
+#proyectos .carousel-inner .carousel-item-next,
+#proyectos .carousel-inner .carousel-item-prev,
+#proyectos .carousel-inner .active.carousel-item-start,
+#proyectos .carousel-inner .active.carousel-item-end {
   left: 0;
   transform: translate3d(0, 0, 0);
 }
 
-#obras .carousel-control-next-icon,
-#obras .carousel-control-prev-icon {
+#proyectos .carousel-control-next-icon,
+#proyectos .carousel-control-prev-icon {
   background: none;
   font-size: 48px;
   line-height: 0;
@@ -946,44 +972,44 @@ section {
   justify-content: center;
 }
 
-#obras .carousel-control-next-icon:hover,
-#obras .carousel-control-prev-icon:hover {
+#proyectos .carousel-control-next-icon:hover,
+#proyectos .carousel-control-prev-icon:hover {
   background: var(--primary);
   color: var(--white);
 }
 
-#obras .carousel-indicators li {
+#proyectos .carousel-indicators li {
   cursor: poMontserrat;
-  background: var(--white);
+  background: none !important;
   overflow: hidden;
-  border: 0;
+  border: 2px solid var(--white);
   width: 12px;
   height: 12px;
   border-radius: 50px;
-  opacity: 0.6;
+  opacity: 1;
   transition: 0.3s;
 }
 
-#obras .carousel-indicators li.active {
+#proyectos .carousel-indicators li.active {
   opacity: 1;
-  background: var(--primary);
+  background: var(--white) !important;
 }
 
 @media (max-width: 992px) {
-  #obras {
+  #proyectos {
     height: 50vh;
   }
 
-  #obras h2 {
+  #proyectos h2 {
     font-size: 28px;
   }
 
-  #obras .carousel .carousel-main-title {
+  #proyectos .carousel .carousel-main-title {
     margin-top: 24px;
   }
 
-  #obras .carousel-control-next-icon,
-  #obras .carousel-control-prev-icon {
+  #proyectos .carousel-control-next-icon,
+  #proyectos .carousel-control-prev-icon {
     display: none;
   }
 
@@ -1081,11 +1107,11 @@ section {
 --------------------------------------------------------------*/
 .contacto .info {
   width: 100%;
+  color: var(--white);
 }
 
-.contacto .info .email,
-.contacto .info .phone {
-  margin-top: 40px;
+.contacto .info a {
+  color: var(--white);
 }
 
 .contacto .social-links {
@@ -1095,8 +1121,8 @@ section {
 .contacto .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: var(--primary);
-  color: var(--white);
+  background: var(--white);
+  color: var(--primary);
   line-height: 1;
   padding: 8px 0;
   margin-right: 4px;
@@ -1109,7 +1135,7 @@ section {
 
 .contacto .social-links a:hover {
   background: var(--secondary);
-  color: var(--primary);
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -1208,7 +1234,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: var(--dark);
+  background: var(--secondary);
   color: var(--white);
   font-size: 14px;
   text-align: center;
@@ -1224,10 +1250,11 @@ section {
 }
 
 #footer .credits a {
-  color: var(--primary);
+  color: var(--white);
+  text-decoration: underline;
   transition: 0.3s;
 }
 
 #footer .credits a:hover {
-  color: var(--primary);
+  color: var(--white);
 }
